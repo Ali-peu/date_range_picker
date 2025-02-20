@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_date_range_picker/flutter_date_range_picker.dart';
 
 /// A widget that displays the current and next month in a row along with navigation arrows.
 class MonthSelectorAndDoubleIndicator extends StatelessWidget {
@@ -32,6 +32,10 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
   /// The text style of the displayed month.
   final TextStyle? style;
 
+  String getMonthName(DateTime dateTime) {
+    return '${shortMonthNames[dateTime.month -1]} ${dateTime.year} г.';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -43,7 +47,7 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            DateFormat.yMMM().format(currentMonth),
+            getMonthName(currentMonth),
             textAlign: TextAlign.center,
             style: style,
           ),
@@ -52,7 +56,7 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Text(
-              DateFormat.yMMM().format(nextMonth!),
+              getMonthName(nextMonth!),
               textAlign: TextAlign.center,
               style: style,
             ),

@@ -177,7 +177,9 @@ class RangePickerController {
   /// Returns the number of days to skip at the beginning of the month.
   int retrieveDeltaForMonth(final DateTime month) {
     DateTime firstDayOfMonth = DateTime(month.year, month.month, 1);
-    return firstDayOfMonth.weekday % 7;
+
+    // Сдвигаем, чтобы понедельник был 0, а воскресенье - 6
+    return (firstDayOfMonth.weekday % 7 + 6) % 7;
   }
 
   void onDateRangeChangedExternally(DateRange? newRange) {

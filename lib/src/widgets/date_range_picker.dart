@@ -85,13 +85,15 @@ class DayNamesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final newWeekDays = [...weekDays.sublist(1,weekDays.length),weekDays.sublist(0,1)];
     return Row(
       children: [
         for (var day in weekDays)
+        
           Expanded(
             child: Center(
               child: Text(
-                day,
+                "$day",
                 style: textStyle,
               ),
             ),
@@ -217,6 +219,7 @@ class DateRangePickerWidgetState extends State<DateRangePickerWidget> {
   @override
   void initState() {
     super.initState();
+
 
     subscription = calendarController.updateStream.listen((event) {
       if (mounted) setState(() {});

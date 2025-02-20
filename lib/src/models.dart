@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 /// A model that represents a date range.
 /// It is used to represent the selected date range in the calendar.
@@ -14,8 +13,19 @@ class DateRange {
 
   @override
   String toString() {
-    return "${DateFormat('dd/MM/yyyy').format(start)} - ${DateFormat('dd/MM/yyyy').format(end)}";
+    final dateStart = '${_addNullForNumber(start.day)}/${_addNullForNumber(start.month)}/${start.year}';
+    final dateEnd = '${_addNullForNumber(end.day)}/${_addNullForNumber(end.month)}/${end.year}';
+
+    return "$dateStart - $dateEnd";
   }
+
+     String _addNullForNumber(int value) {
+    if (value < 10) {
+      return '0$value';
+    }
+    return '$value';
+  }
+
 
   /// Returns the duration of the date range in days.
   int get duration => end.difference(start).inDays;

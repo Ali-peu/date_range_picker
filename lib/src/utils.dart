@@ -1,5 +1,20 @@
-import 'package:intl/intl.dart';
+List<String> defaultWeekDays() => ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
-/// Returns the default week days as strings (using intl).
-List<String> defaultWeekDays() =>
-    DateFormat.E().dateSymbols.WEEKDAYS.map((e) => e.substring(0, 3)).toList();
+
+List<String> shortMonthNames = [
+  'янв.',
+  'февр.',
+  'март.',
+  'апр.',
+  'май.',
+  'июнь.',
+  'июль.',
+  'авг.',
+  'сент.',
+  'окт.',
+  'нояб.',
+  'дек.',
+
+
+
+];
