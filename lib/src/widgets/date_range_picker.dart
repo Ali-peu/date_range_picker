@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_date_range_picker/flutter_date_range_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 /// The default [CalendarTheme] used by the date range picker.
 const CalendarTheme kTheme = CalendarTheme(
@@ -85,13 +87,15 @@ class DayNamesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final newWeekDays = [...weekDays.sublist(1,weekDays.length),weekDays.sublist(0,1)];
     return Row(
       children: [
         for (var day in weekDays)
+        
           Expanded(
             child: Center(
               child: Text(
-                day,
+                "$day",
                 style: textStyle,
               ),
             ),
@@ -217,6 +221,10 @@ class DateRangePickerWidgetState extends State<DateRangePickerWidget> {
   @override
   void initState() {
     super.initState();
+
+    Intl.defaultLocale = 'ru_RU';
+
+    initializeDateFormatting('ru_RU');
 
     subscription = calendarController.updateStream.listen((event) {
       if (mounted) setState(() {});
